@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master-layout/master_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="Saroj">
+    <link rel="icon" href="favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <title>BankApp - Add Customer</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div>
+        <form method="post" action="/bank/customer/save" th:object="${customer}">
+            <fieldset>
+                <legend>Add New Customer</legend>
+                <input type="hidden" name="customerId" th:value="${customer.id}">
+                <div class="form-group">
+                    <label for="customerNumber" >CustomerNumber</label>
+                        <span th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}"
+                              class="alert alert-danger"></span>
+                        <input type="number" name="customerNumber" placeholder="Enter customer number"  th:value="${customer.customerNumber}" class="form-control" id="customerNumber">
+
+                </div>
+                <div class="form-group">
+                    <label for="firstName" >First Name</label>
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                          class="alert alert-danger"></span>
+                    <input type="text" name="firstName" placeholder="Enter first name"  th:value="${customer.firstName}" class="form-control" id="firstName">
+
+                </div>
+                <div class="form-group">
+                    <label for="middleName" >Middle Name</label>
+                    <span th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"
+                          class="alert alert-danger"></span>
+                    <input type="text" name="middleName" placeholder="Enter middle name"
+                           th:value="${customer.middleName}" class="form-control" id="middleName">
+
+                </div>
+                <div class="form-group">
+                    <label for="lastName" >Last Name</label>
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                          class="alert alert-danger"></span>
+                    <input type="text" name="lastName" placeholder="Enter last name"
+                           th:value="${customer.lastName}" class="form-control" id="lastName">
+
+                </div>
+                <div class="form-group">
+                    <label for="emailAddress" >Email Address</label>
+                    <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}"
+                          class="alert alert-danger"></span>
+                    <input type="text" name="lastName" placeholder="Enter email"
+                           th:field="*{emailAddress}" class="form-control" id="emailAddress">
+
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber" >Contact Phone Number</label>
+                    <span th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}"
+                          class="alert alert-danger"></span>
+                    <input type="text" name="contactNumber" placeholder="Enter contact number"
+                           th:value="${customer.contactNumber}" class="form-control" id="contactNumber">
+
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth" >Date Of Birth</label>
+<!--                    <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"-->
+<!--                          class="alert alert-danger"></span>-->
+                    <input type="date" name="dateOfBirth" placeholder="Enter DOB"
+                           th:field="*{dateOfBirth}" class="form-control" id="dateOfBirth">
+
+                </div>
+
+
+
+<!--                <div class="form-group">-->
+<!--                    <label for="exampleSelect2">Example multiple select</label>-->
+<!--                    <select multiple="" class="form-control" id="exampleSelect2">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                        <option>5</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+</th:block>
+
+</body>
+</html>
